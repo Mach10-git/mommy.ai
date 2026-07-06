@@ -6,7 +6,7 @@ from pygame_widgets.textbox import TextBox
 import string
 import secrets
 import socket #Needed later when establishing comms with server
-#TODO: import socket, secrets and string only if set up in Desktop + Mobile mode.
+#TODO: import socket, secrets and string only if set up in Desktop + Mobile mode. No need to do that if you're going fully local.
 
 #Initiate Pygame and UI prerequisites
 pygame.init()
@@ -17,13 +17,13 @@ font = pygame.font.Font('SFPRODISPLAYREGULAR.OTF', 72)
 print("Display initiated") #Debug
 
 #Display welcome screen and its widgets
-text = font.render('Welcome to my.ai!', True, (0,105,137))
+text = font.render('Welcome to mommy.ai!', True, (0,105,137))
 textRect = text.get_rect()
 textRect.center = (width // 2, height // 3)
 screen.blit(text, textRect)
 
 Beginbutton = pygame.transform.scale(pygame.image.load("Begin.png"), (width/3, width*3/16))
-screen.blit(Beginbutton, ((width/2)-(width/3)/2,(height/3*2)-(width*3/16)/2)) #Math mess to blit the button correctly
+screen.blit(Beginbutton, ((width/2)-(width/3)/2,(height/3*2)-(width*3/16)/2)) #Math mess to blit the button correctly (I'm terrible at math and I have absolutely no clue how I managed to make this crap work.)
 
 #Create ID
 alphabet = string.ascii_letters + string.digits
@@ -31,7 +31,10 @@ userID = ''.join(secrets.choice(alphabet) for _ in range(24))
 
 print("ID created:", userID) #Debug
 
-#Abandon hope, all ye who enter here.
+'''
+Abandon hope, all ye who enter here.
+'''
+
 def output():
     global name
     name = textbox.getText()
@@ -62,6 +65,7 @@ while running:
             	nameentry(screen, font)
             	pygame_widgets.update(events)
             	pygame.display.flip()		
+#I'd spent 1,5 days getting this bullshit to work. If someone DARES to refactor the button logic, I'll track them down and fucking RIP THEM APART. The fruit of my labor and wasted time should NOT be touched. Ever.
         elif event.type == pygame.KEYDOWN:  
             if event.key == pygame.K_ESCAPE:  
                 running = False
