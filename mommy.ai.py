@@ -58,10 +58,10 @@ while running:
         if event.type == pygame.MOUSEBUTTONDOWN:
             Beginbutton_rect = Beginbutton.get_rect(topleft = ((width/2)-(width/3)/2,(height/3*2)-(width*3/16)/2))
             if Beginbutton_rect.collidepoint(event.pos):
-            			screen.fill((234, 235, 237))
-            			nameentry(screen, font)
-            			pygame_widgets.update(events)
-            			pygame.display.flip()		
+            	screen.fill((234, 235, 237))
+            	nameentry(screen, font)
+            	pygame_widgets.update(events)
+            	pygame.display.flip()		
         elif event.type == pygame.KEYDOWN:  
             if event.key == pygame.K_ESCAPE:  
                 running = False
